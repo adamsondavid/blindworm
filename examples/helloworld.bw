@@ -1,0 +1,20 @@
+native def printf(format: str) -> int;
+native def getchar() -> int;
+
+def print(string: str) -> None: (
+    printf(string);
+    return;
+)
+
+def pause() -> None: (
+    print("Press enter to continue...");
+    getchar();
+    return;
+)
+
+def main() -> int: (
+    print("BlindWorm is awesome! 🐍😍🪱\n");
+    pause();
+
+    return 0;
+)

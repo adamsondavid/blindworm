@@ -1,0 +1,98 @@
+native def printf(format: str, i: int) -> int;
+
+def printBool(pre: str, b: bool) -> None: (
+    printf(pre, 0);
+    if(b): (
+        printf(" = True\n", 0);
+    ) else: (
+        printf(" = False\n", 0);
+    )
+    return;
+)
+
+def fibonacci(n: int) -> int: (
+    a: int = 0;
+    b: int = 1;
+    old_b: int;
+
+    i: int = 0;
+    while(i < n-1): (
+        old_b = b;
+        b = a + b;
+        a = old_b;
+        i = i + 1;
+    )
+
+    return b;
+)
+
+def factorial(n: int) -> int: (
+    if(n==0): (
+        return 1;
+    ) else: (
+        return n*factorial(n-1);
+    )
+    return 1;
+)
+
+def whatKindOfNumberIsThis(n: int) -> None: (
+    answer: str = "I dont '%d' know, sorry!\n";
+    if(n==0): (
+        answer = "%d is zero!\n";
+    ) elif(n>1): (
+        answer = "%d is bigger than one!\n";
+    ) else: (
+        answer = "%d scares me, I dont like negative numbers!\n";
+    )
+    printf(answer, n);
+    return;
+)
+
+def arithmetic() -> None: (
+    printf("1+1 = %d\n", 1 + 1);
+    printf("42-2 = %d\n", 42-2);
+    printf("2*2 = %d\n", 2*2);
+    printf("10/2 = %d\n", 10/2);
+    printf("5! = %d\n", factorial(5));
+    printf("fibonacci(12) = %d\n", fibonacci(12));
+    printf("4*4+2+5+21*(2+2) = %d\n", 4*4+2+5+21*(2+2));
+    printf("-5 = %d\n", -5);
+    return;
+)
+
+def logical() -> None: (
+    printBool("1 == 1", 1 == 1);
+    printBool("1 != 1", 1 != 1);
+    printBool("1 >  1", 1 >  1);
+    printBool("1 >= 1", 1 >= 1);
+    printBool("1 <  1", 1 <  1);
+    printBool("1 <= 1", 1 <= 1);
+    printf("\n", 0);
+    printBool("False and False", False and False);
+    printBool("False and True", False and True);
+    printBool("True and False", True and False);
+    printBool("True and True", True and True);
+    printf("\n", 0);
+    printBool("False or False", False or False);
+    printBool("False or True", False or True);
+    printBool("True or False", True or False);
+    printBool("True or True", True or True);
+    printf("\n", 0);
+    printBool("not not not True", not not not True);
+    printf("\n", 0);
+    printBool("True or False and not True", True or False and not True);
+    return;
+)
+
+def main() -> int: (
+    printf("----- Welcome to the BlindWorm 🪱 Showcase! ---------\n", 0);
+    printf("----- Arithmetic ------------------------------------\n", 0);
+    arithmetic();
+    printf("----- Logical ---------------------------------------\n", 0);
+    logical();
+    printf("----- If, Elif, Else --------------------------------\n", 0);
+    whatKindOfNumberIsThis(0);
+    whatKindOfNumberIsThis(24601);
+    whatKindOfNumberIsThis(-99);
+    return 0;
+)
